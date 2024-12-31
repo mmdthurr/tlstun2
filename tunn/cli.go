@@ -18,7 +18,7 @@ type Cli struct {
 
 func (c Cli) Ltocnc() {
 	http.HandleFunc(fmt.Sprintf("/%s", c.AuthKey), func(w http.ResponseWriter, r *http.Request) {
-		go c.StartConn(fmt.Sprintf("%s:4443", strings.Split(r.RemoteAddr, ":")[0]))
+		go c.StartConn(fmt.Sprintf("%s:443", strings.Split(r.RemoteAddr, ":")[0]))
 	})
 
 	err := http.ListenAndServe(fmt.Sprintf("0.0.0.0:%s", c.NCPort), nil)
